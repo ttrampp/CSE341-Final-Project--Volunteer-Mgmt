@@ -18,6 +18,18 @@ app.use(express.json());
 const testRoutes = require("./routes/testRoutes");
 app.use("/api/test", testRoutes);
 
+const userRoutes = require("./routes/userRoutes");
+app.use("/api/users", userRoutes);
+
+const eventRoutes = require("./routes/eventRoutes");
+app.use("/api/events", eventRoutes);
+
+const volunteerRoutes = require("./routes/volunteerRoutes");
+app.use("/api/volunteers", volunteerRoutes);
+
+const feedbackRoutes = require("./routes/feedbackRoutes");
+app.use("/api/feedback", feedbackRoutes);
+
 // Root route
 app.get("/", (req, res) => {
   res.send("Volunteer Management API");
