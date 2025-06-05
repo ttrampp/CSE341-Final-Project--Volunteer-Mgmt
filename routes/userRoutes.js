@@ -5,7 +5,7 @@ const { use } = require("passport");
 
 router.get("/", userController.getAllUsers);
 router.get("/:id", userController.getUserById);
-router.post("/register", userController.registerUser);
+router.post("/", userController.registerUser);
 router.put("/:id", userController.updateUser);
 router.delete("/:id", userController.deleteUser);
 

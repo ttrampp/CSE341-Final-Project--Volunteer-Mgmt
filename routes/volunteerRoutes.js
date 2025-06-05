@@ -5,7 +5,7 @@ const { use } = require("passport");
 
 router.get("/", volunteerController.getAllVolunteers);
 router.get("/:id", volunteerController.getVolunteerById);
-router.post("/register", volunteerController.registerVolunteer);
+router.post("/", volunteerController.registerVolunteer);
 router.put("/:id", volunteerController.updateVolunteer);
 router.delete("/:id", volunteerController.deleteVolunteer);
 

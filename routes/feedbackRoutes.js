@@ -5,7 +5,7 @@ const { use } = require("passport");
 
 router.get("/", feedbackController.getAllFeedbacks);
 router.get("/:id", feedbackController.getFeedbackById);
-router.post("/register", feedbackController.registerFeedback);
+router.post("/", feedbackController.registerFeedback);
 router.put("/:id", feedbackController.updateFeedback);
 router.delete("/:id", feedbackController.deleteFeedback);
 
