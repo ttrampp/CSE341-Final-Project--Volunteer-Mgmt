@@ -60,7 +60,48 @@
         "tags": [
           "USERS"
         ],
-        "description": "",
+        "description": "Create a new user",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User info",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Jane Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "jane@example.com"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "volunteer"
+                },
+                "passwordHash": {
+                  "type": "string",
+                  "example": "hashedPassword123"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "New York"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "555-123-4567"
+                },
+                "availability": {
+                  "type": "string",
+                  "example": "Weekends only"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"

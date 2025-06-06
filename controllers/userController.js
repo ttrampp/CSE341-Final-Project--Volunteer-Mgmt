@@ -30,7 +30,24 @@ async function getUserById(req, res) {
 
 //POST (create) ONE USER
 async function registerUser(req, res) {
-    //#swagger.tags = ['USERS']
+    /* 
+      #swagger.tags = ['USERS']
+      #swagger.description = 'Create a new user'
+      #swagger.parameters['user'] = {
+          in: 'body',
+          description: 'User info',
+          required: true,
+          schema: {
+              name: 'Jane Doe2',
+              email: 'jane@example.com',
+              role: 'volunteer',
+              passwordHash: 'hashedPassword123',
+              location: 'New York',
+              phone: '555-123-4567',
+              availability: 'Weekends only'
+          }
+      }
+    */
     try {
         const user = new User(req.body);
         await user.save();
