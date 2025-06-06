@@ -1,3 +1,5 @@
+require('dotenv').config(); // Load .env variables
+
 const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
@@ -5,7 +7,7 @@ const doc = {
         title: 'Volunteer Management API',
         description: 'API documentation for the project',
     },
-    host: 'localhost:8080',
+    host: `localhost:${process.env.PORT || 8080}`,
     schemes: ['http'],
 };
 
