@@ -59,7 +59,30 @@ async function registerUser(req, res) {
 
 //PUT (update) ONE USER
 async function updateUser(req, res) {
-    //#swagger.tags = ['USERS']
+    /* 
+      #swagger.tags = ['USERS']
+      #swagger.description = 'Update a user by ID'
+      #swagger.parameters['id'] = {
+          in: 'path',
+          description: 'User ID to update',
+          required: true,
+          type: 'string'
+      }
+      #swagger.parameters['user'] = {
+          in: 'body',
+          description: 'Fields to update for the user',
+          required: true,
+          schema: {
+              name: 'Jane Doe',
+              email: 'jane@example.com',
+              role: 'admin',
+              passwordHash: 'updatedHash123',
+              location: 'San Francisco',
+              phone: '555-987-6543',
+              availability: 'Weekdays'
+          }
+      }
+    */
     if (!ObjectId.isValid(req.params.id)) {
         return res.status(400).json('Must use valid ID to update a user');
     }
