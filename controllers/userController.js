@@ -38,7 +38,7 @@ async function registerUser(req, res) {
           description: 'User info',
           required: true,
           schema: {
-              name: 'Jane Doe',
+              name: 'Jane Doe2',
               email: 'jane@example.com',
               role: 'volunteer',
               passwordHash: 'hashedPassword123',
