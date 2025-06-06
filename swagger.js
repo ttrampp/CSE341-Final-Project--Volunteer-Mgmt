@@ -5,7 +5,7 @@ const doc = {
         title: 'Volunteer Management API',
         description: 'API documentation for the project',
     },
-    host: 'localhost:3000',
+    host: 'localhost:8080',
     schemes: ['http'],
 };
 
