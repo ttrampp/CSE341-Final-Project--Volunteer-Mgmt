@@ -72,7 +72,7 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "Jane Doe"
+                  "example": "Jane Doe2"
                 },
                 "email": {
                   "type": "string",
@@ -145,13 +145,53 @@
         "tags": [
           "USERS"
         ],
-        "description": "",
+        "description": "Update a user by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "User ID to update"
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Fields to update for the user",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Jane Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "jane@example.com"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "admin"
+                },
+                "passwordHash": {
+                  "type": "string",
+                  "example": "updatedHash123"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "San Francisco"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "555-987-6543"
+                },
+                "availability": {
+                  "type": "string",
+                  "example": "Weekdays"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -214,7 +254,54 @@
         "tags": [
           "EVENTS"
         ],
-        "description": "",
+        "description": "Create a new event",
+        "parameters": [
+          {
+            "name": "event",
+            "in": "body",
+            "description": "Event details",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Community Cleanup"
+                },
+                "date": {
+                  "type": "string",
+                  "example": "2025-07-01T10:00:00Z"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "Central Park"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Cleaning up trash and planting trees"
+                },
+                "capacity": {
+                  "type": "number",
+                  "example": 50
+                },
+                "organizerId": {
+                  "type": "string",
+                  "example": "60f1a6d2b9c3f842d8c45f88"
+                },
+                "tags": {
+                  "type": "array",
+                  "example": [
+                    "environment",
+                    "volunteer"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -258,13 +345,59 @@
         "tags": [
           "EVENTS"
         ],
-        "description": "",
+        "description": "Update an existing event by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Event ID to update"
+          },
+          {
+            "name": "event",
+            "in": "body",
+            "description": "Updated event details",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Updated Event Title"
+                },
+                "date": {
+                  "type": "string",
+                  "example": "2025-08-01T14:30:00Z"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "Updated Location"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Updated description for the event"
+                },
+                "capacity": {
+                  "type": "number",
+                  "example": 100
+                },
+                "organizerId": {
+                  "type": "string",
+                  "example": "60f1a6d2b9c3f842d8c45f88"
+                },
+                "tags": {
+                  "type": "array",
+                  "example": [
+                    "community",
+                    "outreach"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
           }
         ],
         "responses": {

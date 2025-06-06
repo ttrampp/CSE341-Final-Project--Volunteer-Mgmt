@@ -30,7 +30,24 @@ async function getEventById(req, res) {
 
 //POST (create) ONE EVENT
 async function registerEvent(req, res) {
-    //#swagger.tags = ['EVENTS']
+    /*
+      #swagger.tags = ['EVENTS']
+      #swagger.description = 'Create a new event'
+      #swagger.parameters['event'] = {
+          in: 'body',
+          description: 'Event details',
+          required: true,
+          schema: {
+              title: 'Community Cleanup',
+              date: '2025-07-01T10:00:00Z',
+              location: 'Central Park',
+              description: 'Cleaning up trash and planting trees',
+              capacity: 50,
+              organizerId: '60f1a6d2b9c3f842d8c45f88',
+              tags: ['environment', 'volunteer']
+          }
+      }
+    */
     try {
         const event = new Event(req.body);
         await event.save();
@@ -42,7 +59,30 @@ async function registerEvent(req, res) {
 
 //PUT (update) ONE EVENT
 async function updateEvent(req, res) {
-    //#swagger.tags = ['EVENTS']
+    /* 
+      #swagger.tags = ['EVENTS']
+      #swagger.description = 'Update an existing event by ID'
+      #swagger.parameters['id'] = {
+          in: 'path',
+          description: 'Event ID to update',
+          required: true,
+          type: 'string'
+      }
+      #swagger.parameters['event'] = {
+          in: 'body',
+          description: 'Updated event details',
+          required: true,
+          schema: {
+              title: 'Updated Event Title',
+              date: '2025-08-01T14:30:00Z',
+              location: 'Updated Location',
+              description: 'Updated description for the event',
+              capacity: 100,
+              organizerId: '60f1a6d2b9c3f842d8c45f88',
+              tags: ['community', 'outreach']
+          }
+      }
+    */
     if (!ObjectId.isValid(req.params.id)) {
         return res.status(400).json('Must use valid ID to update an event');
     }
