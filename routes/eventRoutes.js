@@ -5,7 +5,7 @@ const { use } = require("passport");
 
 router.get("/", eventController.getAllEvents);
 router.get("/:id", eventController.getEventById);
-router.post("/register", eventController.registerEvent);
+router.post("/", eventController.registerEvent);
 router.put("/:id", eventController.updateEvent);
 router.delete("/:id", eventController.deleteEvent);
 

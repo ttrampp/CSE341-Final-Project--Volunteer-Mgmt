@@ -2,8 +2,11 @@
 require("dotenv").config();
 
 // Import dependencies
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const bodyParser = require('body-parser');
+const passport = require('passport');
+GitHubStrategy = require('passport-github2').Strategy;
+const cors = require('cors');
 const connectDB = require("./database/connection");
 connectDB();
 
@@ -11,24 +14,23 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors());
-app.use(express.json());
-
-// Routes
-const testRoutes = require("./routes/testRoutes");
-app.use("/api/test", testRoutes);
-
-const userRoutes = require("./routes/userRoutes");
-app.use("/api/users", userRoutes);
-
-const eventRoutes = require("./routes/eventRoutes");
-app.use("/api/events", eventRoutes);
-
-const volunteerRoutes = require("./routes/volunteerRoutes");
-app.use("/api/volunteers", volunteerRoutes);
-
-const feedbackRoutes = require("./routes/feedbackRoutes");
-app.use("/api/feedback", feedbackRoutes);
+app
+  .use(bodyParser.json())
+  .use(
+    cors({
+      origin: '*',
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH', 'UPDATE'],
+      allowedHeaders: [
+        'Origin',
+        'X-Requested-With',
+        'Content-Type',
+        'Accept',
+        'Z-key',
+        'Authorization'
+      ]
+    })
+  )
+  .use('/', require('./routes'));
 
 // Root route
 app.get("/", (req, res) => {
