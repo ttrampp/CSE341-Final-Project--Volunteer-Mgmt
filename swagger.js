@@ -7,8 +7,8 @@ const doc = {
         title: 'Volunteer Management API',
         description: 'API documentation for the project',
     },
-        host: process.env.SWAGGER_HOST || 'localhost:8080',
-        schemes: [process.env.NODE_ENV === 'production' ? 'https' : 'http'],
+    host: process.env.SWAGGER_HOST || 'localhost:8080',
+    schemes: [process.env.NODE_ENV === 'production' ? 'https' : 'http'],
 };
 
 const outputFile = './swagger.json';
