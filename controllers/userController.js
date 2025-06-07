@@ -49,6 +49,11 @@ async function registerUser(req, res) {
       }
     */
     try {
+        // ✅ Validate body presence and type
+        if (!req.body || Object.keys(req.body).length === 0 || Array.isArray(req.body)) {
+            return res.status(400).json({ error: "Request body must be a non-empty object" });
+        }
+
         const { name, email, role, passwordHash, location, phone, availability } = req.body;
 
         if (!name || typeof name !== 'string') {
