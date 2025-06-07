@@ -8,7 +8,7 @@
   "host": "cse341-final-project-volunteer-mgmt-9qgz.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/login": {
