@@ -49,11 +49,35 @@ async function registerUser(req, res) {
       }
     */
     try {
-        const user = new User(req.body);
+        const { name, email, role, passwordHash, location, phone, availability } = req.body;
+
+        if (!name || typeof name !== 'string') {
+            return res.status(400).json({ error: "'name' is required and must be a string" });
+        }
+        if (!email || typeof email !== 'string') {
+            return res.status(400).json({ error: "'email' is required and must be a string" });
+        }
+        if (!role || typeof role !== 'string') {
+            return res.status(400).json({ error: "'role' is required and must be a string" });
+        }
+        if (!passwordHash || typeof passwordHash !== 'string') {
+            return res.status(400).json({ error: "'passwordHash' is required and must be a string" });
+        }
+
+        const user = new User({
+            name,
+            email,
+            role,
+            passwordHash,
+            location,
+            phone,
+            availability
+        });
+
         await user.save();
         res.status(201).json({ message: 'User created successfully!', user });
     } catch (err) {
-        res.status(400).json({ error: err.message });
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -86,12 +110,22 @@ async function updateUser(req, res) {
     if (!ObjectId.isValid(req.params.id)) {
         return res.status(400).json('Must use valid ID to update a user');
     }
+
+    const { email, phone } = req.body;
+
+    if (email && typeof email !== 'string') {
+        return res.status(400).json({ error: "'email' must be a string" });
+    }
+    if (phone && typeof phone !== 'string') {
+        return res.status(400).json({ error: "'phone' must be a string" });
+    }
+
     try {
         const updated = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!updated) return res.status(404).json({ message: "User not found" });
         res.status(200).send('User updated successfully!');
     } catch (err) {
-        res.status(400).json({ error: err.message });
+        res.status(500).json({ error: err.message });
     }
 }
 
