@@ -49,7 +49,6 @@ async function registerUser(req, res) {
       }
     */
     try {
-        // ✅ Validate body presence and type
         if (!req.body || Object.keys(req.body).length === 0 || Array.isArray(req.body)) {
             return res.status(400).json({ error: "Request body must be a non-empty object" });
         }
@@ -113,7 +112,11 @@ async function updateUser(req, res) {
       }
     */
     if (!ObjectId.isValid(req.params.id)) {
-        return res.status(400).json('Must use valid ID to update a user');
+        return res.status(400).json({ error: 'Must use valid ID to update a user' });
+    }
+
+    if (!req.body || Object.keys(req.body).length === 0 || Array.isArray(req.body)) {
+        return res.status(400).json({ error: "Request body must be a non-empty object" });
     }
 
     const { email, phone } = req.body;
@@ -121,6 +124,7 @@ async function updateUser(req, res) {
     if (email && typeof email !== 'string') {
         return res.status(400).json({ error: "'email' must be a string" });
     }
+
     if (phone && typeof phone !== 'string') {
         return res.status(400).json({ error: "'phone' must be a string" });
     }
