@@ -7,8 +7,8 @@ const doc = {
         title: 'Volunteer Management API',
         description: 'API documentation for the project',
     },
-    host: `localhost:${process.env.PORT || 8080}`,
-    schemes: ['http'],
+    host: 'cse341-final-project-volunteer-mgmt.onrender.com/', 
+    schemes: ['https'], 
 };
 
 const outputFile = './swagger.json';
