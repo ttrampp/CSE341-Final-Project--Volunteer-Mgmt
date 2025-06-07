@@ -33,17 +33,8 @@ app
   .use('/', require('./routes'));
 
 // Root route
-app.get('/', (req, res) => {
-  res.send(`
-    <h1>Welcome to the Volunteer Management API</h1>
-    <p>Status: ${req.isAuthenticated() ? `Logged in as ${req.user.username}` : "Logged out"}</p>
-    <ul>
-      <li><a href="/auth/github">Login with GitHub</a></li>
-      <li><a href="/auth/logout">Logout</a></li>
-      <li><a href="/volunteers">View Volunteers</a></li>
-      <li><a href="/api-docs">Swagger Documentation</a></li>
-    </ul>
-  `);
+app.get("/", (req, res) => {
+  res.send("Welcome to the Volunteer Management API");
 });
 
 // Start server
