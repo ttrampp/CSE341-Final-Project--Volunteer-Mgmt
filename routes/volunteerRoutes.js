@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const volunteerController = require("../controllers/volunteerController");
-const { use } = require("passport");
+const {ensureAuthenticated, ensureSelfOrAdmin,} = require("../middleware/authMiddleware");
 
 router.get("/", volunteerController.getAllVolunteers);
 router.get("/:id", volunteerController.getVolunteerById);
-router.post("/", volunteerController.registerVolunteer);
-router.put("/:id", volunteerController.updateVolunteer);
-router.delete("/:id", volunteerController.deleteVolunteer);
+router.post("/", ensureAuthenticated, volunteerController.registerVolunteer);
+router.put("/:id", ensureSelfOrAdmin, volunteerController.updateVolunteer);
+router.delete("/:id", ensureSelfOrAdmin, volunteerController.deleteVolunteer);
 
 module.exports = router;

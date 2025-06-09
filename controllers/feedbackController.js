@@ -55,7 +55,7 @@ async function updateFeedback(req, res) {
     }
 }
 
-//DELETE ONE USER
+//DELETE ONE FEEDBACK
 async function deleteFeedback(req, res) {
     //#swagger.tags = ['FEEDBACK']
     if (!ObjectId.isValid(req.params.id)) {
