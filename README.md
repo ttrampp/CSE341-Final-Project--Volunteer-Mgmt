@@ -53,3 +53,11 @@ This API uses GitHub OAuth via Passport.js to authenticate users. Access tokens 
 git clone https://github.com/YOUR_USERNAME/volunteer-management-system.git
 cd volunteer-management-system
 npm install
+
+## Contributors
+
+This project has been enhanced by the contributions of the following individuals:
+- ErikBurton
+- ttrampp
+- jakeprieido
+- Ericevijay12 (Added professional input and support)
