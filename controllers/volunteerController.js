@@ -6,7 +6,7 @@ const ObjectId = mongoose.Types.ObjectId;
 async function getAllVolunteers(req, res) {
     //#swagger.tags = ['VOLUNTEERS']
     try {
-        const volunteers = await Volunteer.find();
+        const volunteers = await Volunteer.find().populate('userId', 'name email').populate('eventId', 'title');
         res.status(200).json(volunteers);
     } catch (err) {
         res.status(400).json({ error: err.message });
@@ -15,12 +15,20 @@ async function getAllVolunteers(req, res) {
 
 //GET ONE VOLUNTEER
 async function getVolunteerById(req, res) {
-    //#swagger.tags = ['VOLUNTEERS']
+    /*
+        #swagger.tags = ['VOLUNTEERS']
+        #swagger.description = 'Get volunteer registration by ID'
+        #swagger.parameters['id'] = {
+            in: 'path',
+            required: true,
+            type: 'string'
+        }
+    */
     if (!ObjectId.isValid(req.params.id)) {
         return res.status(400).json('Must use valid ID to find a volunteer');
     }
     try {
-        const volunteer = await Volunteer.findById(req.params.id);
+        const volunteer = await Volunteer.findById(req.params.id).populate('userID', 'name email').populate('eventID', 'title');
         if (!volunteer) return res.status(404).json({ message: "Volunteer not found" });
         res.status(200).json(volunteer);
     } catch (err) {
@@ -30,7 +38,20 @@ async function getVolunteerById(req, res) {
 
 //POST (create) ONE VOLUNTEER
 async function registerVolunteer(req, res) {
-    //#swagger.tags = ['VOLUNTEERS']
+    /*
+        #swagger.tags = ['VOLUNTEERS']
+        #swagger.description = 'Register a new volunteer'
+        #swagger.parameters['volunteer'] = {
+            in: 'body',
+            description: 'Volunteer registration info',
+            required: true,
+            schema: {
+            $userId: "60f1a6d2b9c3f842d8c45f88",
+            $eventId: "60f1a6d2b9c3f842d8c45f99",
+            status: "pending"
+            }
+        }
+    */
     try {
         const volunteer = new Volunteer(req.body);
         await volunteer.save();
@@ -42,7 +63,24 @@ async function registerVolunteer(req, res) {
 
 //PUT (update) ONE VOLUNTEER
 async function updateVolunteer(req, res) {
-    //#swagger.tags = ['VOLUNTEERS']
+    /*
+        #swagger.tags = ['VOLUNTEERS']
+        #swagger.description = 'Update a volunteer registration'
+        #swagger.parameters['id'] = {
+            in: 'path',
+            description: 'Volunteer ID',
+            required: true,
+            type: 'string'
+        }
+        #swagger.parameters['volunteer'] = {
+            in: 'body',
+            description: 'Updated volunteer info',
+            required: true,
+            schema: {
+            status: "approved"
+            }
+        }
+    */
     if (!ObjectId.isValid(req.params.id)) {
         return res.status(400).json('Must use valid ID to update a volunteer');
     }
@@ -57,7 +95,15 @@ async function updateVolunteer(req, res) {
 
 //DELETE ONE VOLUNTEER
 async function deleteVolunteer(req, res) {
-    //#swagger.tags = ['VOLUNTEERS']
+    /*
+        #swagger.tags = ['VOLUNTEERS']
+        #swagger.description = 'Delete a volunteer by ID'
+        #swagger.parameters['id'] = {
+            in: 'path',
+            required: true,
+            type: 'string'
+        }
+    */
     if (!ObjectId.isValid(req.params.id)) {
         return res.status(400).json('Must use valid ID to delete a volunteer');
     }
