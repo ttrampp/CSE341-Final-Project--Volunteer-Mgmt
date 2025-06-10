@@ -1,0 +1,38 @@
+### Volunteer Management API Testing
+# ------------------------------------------------------------------------ #
+### USER ROUTES 
+
+### GET ALL 
+GET https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/api/users
+### GET BY ID
+GET https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/api/users/6840f2b18388378aedae6664
+
+
+
+# ------------------------------------------------------------------------ #
+### EVENT ROUTES
+
+### GET ALL
+GET https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/api/events
+### GET BY ID
+GET https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/api/events/6840fb55191271d6f6f98fee
+
+
+
+# ------------------------------------------------------------------------ #
+### VOLUNTEER ROUTES
+
+### GET ALL
+GET https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/api/volunteers
+### GET BY ID
+GET https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/api/volunteers/68475962630ca7623c7a9d4c
+
+
+
+# ------------------------------------------------------------------------ #
+### FEEDBACK ROUTES
+
+### GET ALL
+GET https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/api/feedback
+### GET BY ID
+GET https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/api/feedback/68475b6ef736d22be82d572b

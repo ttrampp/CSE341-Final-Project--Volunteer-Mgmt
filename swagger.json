@@ -118,6 +118,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -213,6 +216,9 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -473,7 +479,36 @@
         "tags": [
           "VOLUNTEERS"
         ],
-        "description": "",
+        "description": "Register a new volunteer",
+        "parameters": [
+          {
+            "name": "volunteer",
+            "in": "body",
+            "description": "Volunteer registration info",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "60f1a6d2b9c3f842d8c45f88"
+                },
+                "eventId": {
+                  "type": "string",
+                  "example": "60f1a6d2b9c3f842d8c45f99"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "pending"
+                }
+              },
+              "required": [
+                "userId",
+                "eventId"
+              ]
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -489,7 +524,7 @@
         "tags": [
           "VOLUNTEERS"
         ],
-        "description": "",
+        "description": "Get volunteer registration by ID",
         "parameters": [
           {
             "name": "id",
@@ -517,13 +552,29 @@
         "tags": [
           "VOLUNTEERS"
         ],
-        "description": "",
+        "description": "Update a volunteer registration",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Volunteer ID"
+          },
+          {
+            "name": "volunteer",
+            "in": "body",
+            "description": "Updated volunteer info",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "approved"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -542,7 +593,7 @@
         "tags": [
           "VOLUNTEERS"
         ],
-        "description": "",
+        "description": "Delete a volunteer by ID",
         "parameters": [
           {
             "name": "id",
@@ -572,7 +623,7 @@
         "tags": [
           "FEEDBACK"
         ],
-        "description": "",
+        "description": "Get all feedback entries",
         "responses": {
           "200": {
             "description": "OK"
@@ -586,7 +637,39 @@
         "tags": [
           "FEEDBACK"
         ],
-        "description": "",
+        "description": "Create a new feedback entry",
+        "parameters": [
+          {
+            "name": "feedback",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "60f1a6d2b9c3f842d8c45f88"
+                },
+                "eventId": {
+                  "type": "string",
+                  "example": "60f1a6d2b9c3f842d8c45f99"
+                },
+                "rating": {
+                  "type": "number",
+                  "example": 4
+                },
+                "comment": {
+                  "type": "string",
+                  "example": "Great experience!"
+                }
+              },
+              "required": [
+                "userId",
+                "eventId"
+              ]
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -602,13 +685,14 @@
         "tags": [
           "FEEDBACK"
         ],
-        "description": "",
+        "description": "Get a feedback entry by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "ID of the feedback to retrieve"
           }
         ],
         "responses": {
@@ -630,13 +714,32 @@
         "tags": [
           "FEEDBACK"
         ],
-        "description": "",
+        "description": "Update feedback for an event",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "ID of the feedback to update"
+          },
+          {
+            "name": "feedback",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "rating": {
+                  "type": "number",
+                  "example": 5
+                },
+                "comment": {
+                  "type": "string",
+                  "example": "Even better this time around!"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -658,13 +761,14 @@
         "tags": [
           "FEEDBACK"
         ],
-        "description": "",
+        "description": "Delete feedback by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "ID of the feedback to delete"
           }
         ],
         "responses": {
