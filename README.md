@@ -2,6 +2,10 @@
 
 A web-based API built with Node.js and MongoDB that allows organizations to manage volunteer events, track signups, and collect feedback from participants.
 
+## Live Deployment Link
+
+https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com
+
 ## 🌟 Features
 
 - OAuth login using GitHub
@@ -59,5 +63,5 @@ npm install
 This project has been enhanced by the contributions of the following individuals:
 - ErikBurton
 - ttrampp
-- jakeprieido
+- jakepreciado
 - Ericevijay12 (Added professional input and support)
