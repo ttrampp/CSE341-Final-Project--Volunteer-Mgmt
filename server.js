@@ -37,6 +37,12 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Volunteer Management API");
 });
 
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error("Global Error:", error.stack);
+  res.status(500).json({ message: "Internal Server Error" });
+});
+
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
