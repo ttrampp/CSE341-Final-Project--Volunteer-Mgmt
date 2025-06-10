@@ -28,7 +28,7 @@ async function getVolunteerById(req, res) {
         return res.status(400).json('Must use valid ID to find a volunteer');
     }
     try {
-        const volunteer = await Volunteer.findById(req.params.id).populate('userID', 'name email').populate('eventID', 'title');
+        const volunteer = await Volunteer.findById(req.params.id).populate('userId', 'name email').populate('eventId', 'title');
         if (!volunteer) return res.status(404).json({ message: "Volunteer not found" });
         res.status(200).json(volunteer);
     } catch (err) {
