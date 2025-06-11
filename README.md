@@ -6,6 +6,23 @@ A web-based API built with Node.js and MongoDB that allows organizations to mana
 
 https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com
 
+
+### API Documentation
+- [Swagger UI Docs]     (https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/api-docs)
+
+### Quick Links
+render.com
+- [Login with GitHub]   (https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/auth/github)
+- [Logout]              (https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/auth/logout)
+
+### User Features
+- [View Users]          (https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/users) _(Modifications Protected)_
+- [View Events]         (https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/events) _(Modifications Protected)_
+- [View Volunteers]     (https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/volunteers) _(Modifications Protected)_
+- [View Feedback]       (https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com/feedback) _(Modifications Protected)_
+
+
+
 ## 🌟 Features
 
 - OAuth login using GitHub
