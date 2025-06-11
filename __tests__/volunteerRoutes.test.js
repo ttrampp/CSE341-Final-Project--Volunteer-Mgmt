@@ -1,0 +1,33 @@
+const app = require('../app')
+const supertest = require('supertest');
+const { expect } = require('@jest/globals');
+const request = supertest(app)
+
+describe('Test Handlers', () => {
+    test('Get all volunteers by /', async () => {
+        const res = await request.get('/api/volunteers');
+        console.log(res.statusCode);
+        expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+        expect(res.statusCode).toBe(200)
+    })
+
+    test('Get one volunteer by /:id', async () => {
+        const input = [
+            { id: '68475962630ca7623c7a9d4b' }, // Valid ID
+            { id: 'invalid-id' }, // Invalid ID
+            { id: '64f1a6d2b9c3f842d8c45f89' } // Non-existent ID
+        ]
+        for (const { id } of input) {
+            const res = await request.get(`/api/volunteers/${id}`);
+            console.log(res.statusCode);
+            expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+            if (id === '68475962630ca7623c7a9d4b') {
+                expect(res.statusCode).toBe(200);
+            } else if (id === 'invalid-id') {
+                expect(res.statusCode).toBe(400); 
+            } else {
+                expect(res.statusCode).toBe(404);
+            }
+        }
+    })
+})
