@@ -8,8 +8,6 @@ const connectDB = async () => {
     console.error("Missing MONGODB_URI in .env file");
     process.exit(1);
   }
-
-  try {
     await mongoose.connect(uri, {
       dbName,
     });

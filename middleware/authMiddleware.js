@@ -1,39 +1,47 @@
-function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
+const isAuthenticated = (req, res, next) => {
+    if (req.session.user === undefined) {
+        return res.status(401).json('You must be logged in to gain access.');
     }
-    return res.status(401).json({message: "You must be logged in to access this route."})
+    next();
 }
 
-function ensureSelfOrAdmin(req, res, next) {
-    if (!req.isAuthenticated()) {
-        return res.status(401).json({message: "You must be logged in."});
-    }
+// function ensureAuthenticated(req, res, next) {
+//     if (req.isAuthenticated()) {
+//         return next();
+//     }
+//     return res.status(401).json({message: "You must be logged in to access this route."})
+// }
 
-    const isAdmin = req.user.role === 'admin';
-    const isSelf = req.user._id == req.params.id;
+// function ensureSelfOrAdmin(req, res, next) {
+//     if (!req.isAuthenticated()) {
+//         return res.status(401).json({message: "You must be logged in."});
+//     }
 
-    if (isAdmin || isSelf) {
-        return next();
-    }
+//     const isAdmin = req.user.role === 'admin';
+//     const isSelf = req.user._id == req.params.id;
 
-    return res.status(403).json({message: "Not authorized to perform this action."});
-}
+//     if (isAdmin || isSelf) {
+//         return next();
+//     }
 
-function ensureAdmin(req, res, next) {
-    if (!req.isAuthenticated()) {
-        return res.status(401).json({message: "You must be logged in."});
-    }
+//     return res.status(403).json({message: "Not authorized to perform this action."});
+// }
 
-    if (req.user.role === 'admin') {
-        return next();
-    }
+// function ensureAdmin(req, res, next) {
+//     if (!req.isAuthenticated()) {
+//         return res.status(401).json({message: "You must be logged in."});
+//     }
 
-    return res.status(403).json({message: "Sorry, but only admins may access this route."});
-}
+//     if (req.user.role === 'admin') {
+//         return next();
+//     }
+
+//     return res.status(403).json({message: "Sorry, but only admins may access this route."});
+// }
 
 module.exports = {
-    ensureAuthenticated,
-    ensureSelfOrAdmin,
-    ensureAdmin
+    isAuthenticated,
+    // ensureAuthenticated,
+    // ensureSelfOrAdmin,
+    // ensureAdmin
 };
