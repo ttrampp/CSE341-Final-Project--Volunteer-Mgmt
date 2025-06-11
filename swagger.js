@@ -8,7 +8,8 @@ const doc = {
         description: 'API documentation for the project',
     },
     host: process.env.SWAGGER_HOST || 'localhost:8080',
-    schemes: [process.env.NODE_ENV === 'production' ? 'https' : 'http'],
+    // schemes: [process.env.NODE_ENV === 'production' ? 'https' : 'http'],
+    schemes: ['https']
 
     tags: [
     {
