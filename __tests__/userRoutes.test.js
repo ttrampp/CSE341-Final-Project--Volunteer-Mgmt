@@ -1,3 +1,7 @@
+jest.mock('../middleware/authMiddleware', () => ({
+  isAuthenticated: (req, res, next) => next()
+}));
+
 const app = require('../app')
 const supertest = require('supertest');
 const { expect } = require('@jest/globals');
@@ -24,7 +28,7 @@ describe('Test Handlers', () => {
             if (id === '6840f2b18388378aedae6664') {
                 expect(res.statusCode).toBe(200);
             } else if (id === 'invalid-id') {
-                expect(res.statusCode).toBe(500); 
+                expect(res.statusCode).toBe(400); 
             } else {
                 expect(res.statusCode).toBe(404);
             }
