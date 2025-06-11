@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
-const {ensureSelfOrAdmin, ensureAdmin } = require("../middleware/authMiddleware");
+const { ensureAuthenticated, ensureAdmin, ensureSelfOrAdmin } = require("../middleware/authMiddleware");
 
-router.get("/", ensureAdmin, userController.getAllUsers);
-router.get("/:id", ensureSelfOrAdmin, userController.getUserById);
+
+console.log("userController loaded:", Object.keys(userController));
+
+router.get("/", ensureAuthenticated, userController.getAllUsers);
+router.get("/:id", ensureAuthenticated, userController.getUserById);
 router.post("/", userController.registerUser);
-router.put("/:id", ensureSelfOrAdmin, userController.updateUser);
-router.delete("/:id", ensureSelfOrAdmin, userController.deleteUser);
+router.put("/:id", ensureAuthenticated, userController.updateUser);
+router.delete("/:id", ensureAuthenticated, userController.deleteUser);
 
 module.exports = router;
