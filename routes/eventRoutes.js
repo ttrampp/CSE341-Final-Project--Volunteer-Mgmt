@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const eventController = require("../controllers/eventController");
+
 const { isAuthenticated } = require("../middleware/authMiddleware");
 
 router.get("/", eventController.getAllEvents);
