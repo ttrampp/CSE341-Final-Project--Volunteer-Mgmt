@@ -7,7 +7,7 @@ const doc = {
         title: 'Volunteer Management API',
         description: 'API documentation for the project',
     },
-    host: process.env.SWAGGER_HOST || 'localhost:8080',
+    host: process.env.SWAGGER_HOST || 'cse341-final-project-volunteer-mgmt-p4er.onrender.com',
     schemes: [process.env.NODE_ENV === 'production' ? 'https' : 'http'],
 
     tags: [
