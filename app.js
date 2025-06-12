@@ -28,7 +28,8 @@ app
         'Accept',
         'Z-key',
         'Authorization'
-      ]
+      ],
+      credentials: true
     })
   )
   .use(session({

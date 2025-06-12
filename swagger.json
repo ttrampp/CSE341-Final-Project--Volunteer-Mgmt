@@ -5,10 +5,10 @@
     "description": "API documentation for the project",
     "version": "1.0.0"
   },
-  "host": "cse341-final-project-volunteer-mgmt-p4er.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "securityDefinitions": {
     "GitHubAuth": {
@@ -22,26 +22,6 @@
     }
   },
   "paths": {
-    "/login": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/logout": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/api-docs": {
       "get": {
         "description": "",
