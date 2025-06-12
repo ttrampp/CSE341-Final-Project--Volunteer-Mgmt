@@ -7,12 +7,47 @@ const doc = {
         title: 'Volunteer Management API',
         description: 'API documentation for the project',
     },
-    host: process.env.SWAGGER_HOST || 'localhost:8080',
+    host: process.env.SWAGGER_HOST || 'cse341-final-project-volunteer-mgmt-p4er.onrender.com',
     schemes: [process.env.NODE_ENV === 'production' ? 'https' : 'http'],
-    
+
+    tags: [
+    {
+      name: 'Users',
+      description: 'User management routes'
+    },
+    {
+      name: 'Events',
+      description: 'Event scheduling and lookup'
+    },
+    {
+      name: 'Volunteers',
+      description: 'Volunteer registration and search'
+    },
+    {
+      name: 'Feedback',
+      description: 'Feedback collection and display'
+    }
+  ],
+  securityDefinitions: {
+    GitHubAuth: {
+      type: 'oauth2',
+      flow: 'accessCode',
+      authorizationUrl: 'https://github.com/login/oauth/authorize',
+      tokenUrl: 'https://github.com/login/oauth/access_token',
+      scopes: {
+        'user:email': 'Grants read access to a user email addresses.'
+      }
+    }
+  }
+
 };
 
 const outputFile = './swagger.json';
-const endpointsFiles = ['./routes/index.js'];
+const endpointsFiles = [
+  './routes/userRoutes.js',
+  './routes/eventRoutes.js',
+  './routes/volunteerRoutes.js',
+  './routes/feedbackRoutes.js',
+];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);

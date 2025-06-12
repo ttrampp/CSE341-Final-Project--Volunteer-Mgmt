@@ -5,650 +5,42 @@
     "description": "API documentation for the project",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "cse341-final-project-volunteer-mgmt-p4er.onrender.com",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "User management routes"
+    },
+    {
+      "name": "Events",
+      "description": "Event scheduling and lookup"
+    },
+    {
+      "name": "Volunteers",
+      "description": "Volunteer registration and search"
+    },
+    {
+      "name": "Feedback",
+      "description": "Feedback collection and display"
+    }
+  ],
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "GitHubAuth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://github.com/login/oauth/authorize",
+      "tokenUrl": "https://github.com/login/oauth/access_token",
+      "scopes": {
+        "user:email": "Grants read access to a user email addresses."
+      }
+    }
+  },
   "paths": {
-    "/login": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/logout": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/swagger.json": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/users/": {
-      "get": {
-        "tags": [
-          "USERS"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "USERS"
-        ],
-        "description": "Create a new user",
-        "parameters": [
-          {
-            "name": "user",
-            "in": "body",
-            "description": "User info",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "example": "Jane Doe2"
-                },
-                "email": {
-                  "type": "string",
-                  "example": "jane@example.com"
-                },
-                "role": {
-                  "type": "string",
-                  "example": "volunteer"
-                },
-                "passwordHash": {
-                  "type": "string",
-                  "example": "hashedPassword123"
-                },
-                "location": {
-                  "type": "string",
-                  "example": "New York"
-                },
-                "phone": {
-                  "type": "string",
-                  "example": "555-123-4567"
-                },
-                "availability": {
-                  "type": "string",
-                  "example": "Weekends only"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/users/{id}": {
-      "get": {
-        "tags": [
-          "USERS"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "USERS"
-        ],
-        "description": "Update a user by ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "User ID to update"
-          },
-          {
-            "name": "user",
-            "in": "body",
-            "description": "Fields to update for the user",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "example": "Jane Doe"
-                },
-                "email": {
-                  "type": "string",
-                  "example": "jane@example.com"
-                },
-                "role": {
-                  "type": "string",
-                  "example": "admin"
-                },
-                "passwordHash": {
-                  "type": "string",
-                  "example": "updatedHash123"
-                },
-                "location": {
-                  "type": "string",
-                  "example": "San Francisco"
-                },
-                "phone": {
-                  "type": "string",
-                  "example": "555-987-6543"
-                },
-                "availability": {
-                  "type": "string",
-                  "example": "Weekdays"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "USERS"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/events/": {
-      "get": {
-        "tags": [
-          "EVENTS"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "EVENTS"
-        ],
-        "description": "Create a new event",
-        "parameters": [
-          {
-            "name": "event",
-            "in": "body",
-            "description": "Event details",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "example": "Community Cleanup"
-                },
-                "date": {
-                  "type": "string",
-                  "example": "2025-07-01T10:00:00Z"
-                },
-                "location": {
-                  "type": "string",
-                  "example": "Central Park"
-                },
-                "description": {
-                  "type": "string",
-                  "example": "Cleaning up trash and planting trees"
-                },
-                "capacity": {
-                  "type": "number",
-                  "example": 50
-                },
-                "organizerId": {
-                  "type": "string",
-                  "example": "60f1a6d2b9c3f842d8c45f88"
-                },
-                "tags": {
-                  "type": "array",
-                  "example": [
-                    "environment",
-                    "volunteer"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/api/events/{id}": {
-      "get": {
-        "tags": [
-          "EVENTS"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "EVENTS"
-        ],
-        "description": "Update an existing event by ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Event ID to update"
-          },
-          {
-            "name": "event",
-            "in": "body",
-            "description": "Updated event details",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "example": "Updated Event Title"
-                },
-                "date": {
-                  "type": "string",
-                  "example": "2025-08-01T14:30:00Z"
-                },
-                "location": {
-                  "type": "string",
-                  "example": "Updated Location"
-                },
-                "description": {
-                  "type": "string",
-                  "example": "Updated description for the event"
-                },
-                "capacity": {
-                  "type": "number",
-                  "example": 100
-                },
-                "organizerId": {
-                  "type": "string",
-                  "example": "60f1a6d2b9c3f842d8c45f88"
-                },
-                "tags": {
-                  "type": "array",
-                  "example": [
-                    "community",
-                    "outreach"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "EVENTS"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/volunteers/": {
-      "get": {
-        "tags": [
-          "VOLUNTEERS"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "VOLUNTEERS"
-        ],
-        "description": "Register a new volunteer",
-        "parameters": [
-          {
-            "name": "volunteer",
-            "in": "body",
-            "description": "Volunteer registration info",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "userId": {
-                  "type": "string",
-                  "example": "60f1a6d2b9c3f842d8c45f88"
-                },
-                "eventId": {
-                  "type": "string",
-                  "example": "60f1a6d2b9c3f842d8c45f99"
-                },
-                "status": {
-                  "type": "string",
-                  "example": "pending"
-                }
-              },
-              "required": [
-                "userId",
-                "eventId"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/volunteers/{id}": {
-      "get": {
-        "tags": [
-          "VOLUNTEERS"
-        ],
-        "description": "Get volunteer registration by ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "VOLUNTEERS"
-        ],
-        "description": "Update a volunteer registration",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Volunteer ID"
-          },
-          {
-            "name": "volunteer",
-            "in": "body",
-            "description": "Updated volunteer info",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "string",
-                  "example": "approved"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "VOLUNTEERS"
-        ],
-        "description": "Delete a volunteer by ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/feedback/": {
+    "/": {
       "get": {
         "tags": [
           "FEEDBACK"
@@ -660,6 +52,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       },
@@ -709,11 +104,14 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/api/feedback/{id}": {
+    "/{id}": {
       "get": {
         "tags": [
           "FEEDBACK"
@@ -734,6 +132,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
