@@ -7,24 +7,6 @@
   },
   "host": "cse341-final-project-volunteer-mgmt-p4er.onrender.com",
   "basePath": "/",
-  "tags": [
-    {
-      "name": "Users",
-      "description": "User management routes"
-    },
-    {
-      "name": "Events",
-      "description": "Event scheduling and lookup"
-    },
-    {
-      "name": "Volunteers",
-      "description": "Volunteer registration and search"
-    },
-    {
-      "name": "Feedback",
-      "description": "Feedback collection and display"
-    }
-  ],
   "schemes": [
     "http"
   ],
