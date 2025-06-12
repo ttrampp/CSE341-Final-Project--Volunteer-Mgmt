@@ -8,8 +8,7 @@ const doc = {
         description: 'API documentation for the project',
     },
     host: process.env.SWAGGER_HOST || 'localhost:8080',
-    // schemes: [process.env.NODE_ENV === 'production' ? 'https' : 'http'],
-    schemes: ['https']
+    schemes: [process.env.NODE_ENV === 'production' ? 'https' : 'http'],
 
     tags: [
     {
@@ -49,7 +48,6 @@ const endpointsFiles = [
   './routes/eventRoutes.js',
   './routes/volunteerRoutes.js',
   './routes/feedbackRoutes.js',
-  './routes/authRoute.js'
 ];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);
