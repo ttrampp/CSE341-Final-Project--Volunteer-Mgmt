@@ -10,24 +10,6 @@ const doc = {
     host: process.env.SWAGGER_HOST || 'cse341-final-project-volunteer-mgmt-p4er.onrender.com',
     schemes: [process.env.NODE_ENV === 'production' ? 'https' : 'http'],
 
-    tags: [
-    {
-      name: 'Users',
-      description: 'User management routes'
-    },
-    {
-      name: 'Events',
-      description: 'Event scheduling and lookup'
-    },
-    {
-      name: 'Volunteers',
-      description: 'Volunteer registration and search'
-    },
-    {
-      name: 'Feedback',
-      description: 'Feedback collection and display'
-    }
-  ],
   securityDefinitions: {
     GitHubAuth: {
       type: 'oauth2',

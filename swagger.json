@@ -8,7 +8,7 @@
   "host": "cse341-final-project-volunteer-mgmt-p4er.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "securityDefinitions": {
     "GitHubAuth": {
