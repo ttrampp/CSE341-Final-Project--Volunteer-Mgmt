@@ -10,4 +10,5 @@ router.post("/", isAuthenticated, eventController.registerEvent);
 router.put("/:id", isAuthenticated, eventController.updateEvent);
 router.delete("/:id", isAuthenticated, eventController.deleteEvent);
 
+
 module.exports = router;
