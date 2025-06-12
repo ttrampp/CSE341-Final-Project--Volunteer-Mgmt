@@ -75,13 +75,13 @@ app.get('/', (req, res) => {
   `);
 });
 
-app.get('/github/callback', passport.authenticate('github', {
-  failureRedirect: '/api-docs', session: false}),
-  (req, res) => {
-    // Successful authentication, redirect home.
-    req.session.user = req.user;
-    res.redirect('/');
-  });
+// app.get('/github/callback', passport.authenticate('github', {
+//   failureRedirect: '/api-docs', session: false}),
+//   (req, res) => {
+//     // Successful authentication, redirect home.
+//     req.session.user = req.user;
+//     res.redirect('/');
+//   });
 
 process.on('uncaughtException', (err, origin) => {
   console.log(process.stderr.fd, `Caught Exception: ${err})\n` + `Exception origin: ${origin}`);

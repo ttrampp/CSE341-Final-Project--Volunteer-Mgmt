@@ -11,6 +11,14 @@ router.use('/api/feedback', require('./feedbackRoutes'));
 
 router.get('/login', passport.authenticate('github'), (req, res) => { });
 
+app.get('/github/callback', passport.authenticate('github', {
+  failureRedirect: '/api-docs', session: false}),
+  (req, res) => {
+    // Successful authentication, redirect home.
+    req.session.user = req.user;
+    res.redirect('/');
+  });
+
 // // Login status check routes because it makes me feel better and people like to know if it worked
 // router.get("/login-success", (req, res) => {
 //     res.send(`Welcome ${req.user.username}, you are logged in with GitHub!`);
