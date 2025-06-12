@@ -6,7 +6,7 @@
     "version": "1.0.0"
   },
 
-  "host": "cse341-final-project-volunteer-mgmt-9qgz.onrender.com",
+  "host": "https://cse341-final-project-volunteer-mgmt-p4er.onrender.com/",
   "basePath": "/",
   "schemes": [
     "https"
