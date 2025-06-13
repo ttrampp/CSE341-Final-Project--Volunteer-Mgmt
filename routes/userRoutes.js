@@ -11,5 +11,4 @@ router.put("/:id", isAuthenticated, userController.updateUser);
 router.delete("/:id", isAuthenticated, userController.deleteUser);
 
 
-
 module.exports = router;

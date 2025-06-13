@@ -5,9 +5,25 @@ jest.mock('../middleware/authMiddleware', () => ({
 const app = require('../app')
 const supertest = require('supertest');
 const { expect } = require('@jest/globals');
+const mongoose = require('mongoose');
 const request = supertest(app)
 
 describe('Test Handlers', () => {
+
+    beforeAll(async () => {
+            if (mongoose.connection.readyState === 0) {
+                await mongoose.connect(process.env.MONGODB_URI, {
+                    useNewUrlParser: true,
+                    useUnifiedTopology: true,
+                });
+            }
+        });
+    
+        afterAll(async () => {
+            console.log('Closing database connection');
+            await mongoose.connection.close();
+        });
+
     test('Get all users by /', async () => {
         const res = await request.get('/api/users');
         console.log(res.statusCode);

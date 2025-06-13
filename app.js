@@ -17,16 +17,9 @@ const app = express();
 // Middleware
 app
   .use(bodyParser.json())
-  .use(session({
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: true,
-  }))
-  .use(passport.initialize())
-  .use(passport.session())
   .use(
     cors({
-      origin: '*',
+      origin: ['https://cse341-final-project-volunteer-mgmt-p4er.onrender.com', 'http://localhost:8080'],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH', 'UPDATE'],
       allowedHeaders: [
         'Origin',
@@ -35,9 +28,17 @@ app
         'Accept',
         'Z-key',
         'Authorization'
-      ]
+      ],
+      credentials: true
     })
   )
+  .use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true,
+  }))
+  .use(passport.initialize())
+  .use(passport.session())
   .use('/', require('./routes'));
 
 passport.use(new GitHubStrategy({
@@ -46,9 +47,7 @@ passport.use(new GitHubStrategy({
   callbackURL: process.env.GITHUB_CALLBACK_URL
 },
   function (accessToken, refreshToken, profile, done) {
-    // User.findOrCreate({ githubId: profile.id }, function (err, user) {
     return done(null, profile);
-    //});
   }));
 
 passport.serializeUser((user, done) => {

@@ -5,8 +5,7 @@
     "description": "API documentation for the project",
     "version": "1.0.0"
   },
-
-  "host": "cse341-final-project-volunteer-mgmt-p4er.onrender.com/",
+  "host": "cse341-final-project-volunteer-mgmt-p4er.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -18,34 +17,11 @@
       "authorizationUrl": "https://github.com/login/oauth/authorize",
       "tokenUrl": "https://github.com/login/oauth/access_token",
       "scopes": {
-        "user:email": "Grants read access to a user's email addresses."
+        "user:email": "Grants read access to a user email addresses."
       }
     }
   },
-  "security": [
-    
-  ],
   "paths": {
-    "/login": {
-      "get": {
-        "description": "Start GitHub login",
-        "responses": {
-          "default": {
-            "description": "Redirects to GitHub OAuth"
-          }
-        }
-      }
-    },
-    "/logout": {
-      "get": {
-        "description": "Log the user out",
-        "responses": {
-          "default": {
-            "description": "Logs out and redirects"
-          }
-        }
-      }
-    },
     "/api-docs": {
       "get": {
         "description": "",
@@ -68,11 +44,10 @@
     },
     "/api/users/": {
       "get": {
-        "security": [{ "GitHubAuth": [] }],
         "tags": [
           "USERS"
         ],
-        "description": "Get all users",
+        "description": "",
         "responses": {
           "200": {
             "description": "OK"
@@ -146,7 +121,6 @@
     },
     "/api/users/{id}": {
       "get": {
-        "security": [{ "GitHubAuth": [] }],
         "tags": [
           "USERS"
         ],
@@ -178,7 +152,6 @@
         }
       },
       "put": {
-        "security": [{ "GitHubAuth": [] }],
         "tags": [
           "USERS"
         ],
@@ -250,7 +223,6 @@
         }
       },
       "delete": {
-        "security": [{ "GitHubAuth": [] }],
         "tags": [
           "USERS"
         ],
@@ -298,7 +270,6 @@
         }
       },
       "post": {
-        "security": [{ "GitHubAuth": [] }],
         "tags": [
           "EVENTS"
         ],
@@ -393,7 +364,6 @@
         }
       },
       "put": {
-        "security": [{ "GitHubAuth": [] }],
         "tags": [
           "EVENTS"
         ],
@@ -471,7 +441,6 @@
         }
       },
       "delete": {
-        "security": [{ "GitHubAuth": [] }],
         "tags": [
           "EVENTS"
         ],
@@ -519,7 +488,6 @@
         }
       },
       "post": {
-        "security": [{ "GitHubAuth": [] }],
         "tags": [
           "VOLUNTEERS"
         ],
@@ -596,7 +564,6 @@
         }
       },
       "put": {
-        "security": [{ "GitHubAuth": [] }],
         "tags": [
           "VOLUNTEERS"
         ],
@@ -641,7 +608,6 @@
         }
       },
       "delete": {
-        "security": [{ "GitHubAuth": [] }],
         "tags": [
           "VOLUNTEERS"
         ],
@@ -689,7 +655,6 @@
         }
       },
       "post": {
-        "security": [{ "GitHubAuth": [] }],
         "tags": [
           "FEEDBACK"
         ],
@@ -770,7 +735,6 @@
         }
       },
       "put": {
-        "security": [{ "GitHubAuth": [] }],
         "tags": [
           "FEEDBACK"
         ],
@@ -821,7 +785,6 @@
         }
       },
       "delete": {
-        "security": [{ "GitHubAuth": [] }],
         "tags": [
           "FEEDBACK"
         ],
