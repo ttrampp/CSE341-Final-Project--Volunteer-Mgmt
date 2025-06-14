@@ -4,7 +4,7 @@ A web-based API built with Node.js and MongoDB that allows organizations to mana
 
 ## Live Deployment Link
 
-https://cse341-final-project-volunteer-mgmt-9qgz.onrender.com
+https://cse341-final-project-volunteer-mgmt-p4er.onrender.com/
 
 
 ### API Documentation
